@@ -6,17 +6,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Map;
 
 public class CheckersGameGUIBoard extends JPanel {
 
     private MouseListener squareListener;
     private MouseListener pieceListener;
+
     private JPanel selectedPieceGUI;
-    private int length = 10;
+    private int length;
+    private Map<Object,Object> datas;
 
-    public CheckersGameGUIBoard(){
+    public CheckersGameGUIBoard(Map<Object,Object> datas){
         super();
-
+        this.length = (Integer) datas.get("Taille");
+        this.datas = datas;
         this.squareListener = new SquareListener();
         this.pieceListener = new PieceListener();
 
@@ -29,9 +33,9 @@ public class CheckersGameGUIBoard extends JPanel {
         revalidate();
     }
 
-    private void addPieceOnSquare(PieceSquareColor color, JPanel cell) {
+    private void addPieceOnSquare(PieceSquareColor pieceColor, JPanel cell) {
         //Fonction permettant d'ajouter un pion au damier
-        PieceGUI checker = new PieceGUI(color);
+        PieceGUI checker = new PieceGUI(pieceColor,this.datas);
         checker.addMouseListener(pieceListener); //On ajoute un listener au pion
         cell.add(checker, BorderLayout.CENTER);
     }
@@ -42,25 +46,25 @@ public class CheckersGameGUIBoard extends JPanel {
         //On crée les 100 cases de couleurs
         for(int i=0; i<length; i++) {
             for (int j = 0; j < length; j++) {
-                BorderLayout layout = new BorderLayout();
-                JPanel cell = new JPanel();
-                cell.setLayout(layout);
-                // On met un padding à 10 pour chaque case afin que le pion ne recouvre pas la totalité de la case
-                cell.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-                //Test nombre impair sur i et j pour créer une alternance de couleurs
-                cell.setBackground(((j % 2 == 0 && i % 2 == 0) || (j % 2 != 0 && i % 2 != 0)) ? Color.WHITE : Color.BLACK);
-                cell.addMouseListener(squareListener);
-                this.add(cell);
+                if(((j % 2 == 0 && i % 2 == 0) || (j % 2 != 0 && i % 2 != 0))) {
+                    JPanel cell = new SquareGUI(PieceSquareColor.WHITE,this.datas);
+                    cell.addMouseListener(squareListener);
+                    this.add(cell);
+                }else{
+                    JPanel cell = new SquareGUI(PieceSquareColor.BLACK,this.datas);
+                    cell.addMouseListener(squareListener);
+                    this.add(cell);
+                }
             }
         }
     }
-    private void setPiecesCheckersBoard(int length, int indexBegin, int indexEnd, PieceSquareColor color){
+    private void setPiecesCheckersBoard(int length, int indexBegin, int indexEnd, PieceSquareColor pieceColor){
         for(int i=indexBegin; i<indexEnd; i++) {
             for (int j = 0; j < length; j++) {
                 JPanel cell = (JPanel) this.getComponent(i * 10 + j);
                 if(!((j % 2 == 0 && i % 2 == 0) || (j % 2 != 0 && i % 2 != 0))) { //Permet d'agir uniquement sur les cases noires
                     //On crée le pion sur la case noire
-                    addPieceOnSquare(color, cell);
+                    addPieceOnSquare(pieceColor, cell);
                 }
             }
         }

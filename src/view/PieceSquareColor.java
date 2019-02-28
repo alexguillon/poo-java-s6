@@ -1,5 +1,5 @@
 package view;
 
 public enum PieceSquareColor {
-    CYAN, RED;
+    CYAN, RED, WHITE, BLACK;
 }
