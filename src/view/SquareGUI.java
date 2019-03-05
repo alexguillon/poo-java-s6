@@ -7,10 +7,14 @@ import java.util.Map;
 public class SquareGUI extends JPanel {
 
     private PieceSquareColor pieceColor;
-    private Map<Object,Object> datas;
+    private CheckersGameGUIData datas;
+    private int id;
+    private static int nbObject = 1;
 
-    public SquareGUI(PieceSquareColor pieceColor, Map<Object,Object> datas){
+    public SquareGUI(PieceSquareColor pieceColor, CheckersGameGUIData datas){
         super();
+        this.id = nbObject;
+        nbObject++;
         this.pieceColor = pieceColor;
         this.datas = datas;
         BorderLayout layout = new BorderLayout();
@@ -20,8 +24,13 @@ public class SquareGUI extends JPanel {
     }
 
     public void paintComponent(Graphics g){
-        this.setBackground((Color)this.datas.get(pieceColor)); //Si la case est de type noire, on dessine une case noire, sinon une case blanche
+        this.setBackground((Color)this.datas.getDatas().get(pieceColor)); //Si la case est de type noire, on dessine une case noire, sinon une case blanche
         super.paintComponent(g);
     }
-
+    public int getId(){
+        return id;
+    }
+    public void setId(int id){
+        this.id = id;
+    }
 }

@@ -13,16 +13,16 @@ public class CheckersGameGUIBoard extends JPanel {
     private MouseListener squareListener;
     private MouseListener pieceListener;
 
-    private JPanel selectedPieceGUI;
+    public JPanel selectedPieceGUI;
     private int length;
-    private Map<Object,Object> datas;
+    private CheckersGameGUIData datas;
 
-    public CheckersGameGUIBoard(Map<Object,Object> datas){
+    public CheckersGameGUIBoard(CheckersGameGUIData datas, CheckersGameGUIBoardListeners checkersGameGUIBoardListeners){
         super();
-        this.length = (Integer) datas.get("Taille");
+        this.length = (Integer) datas.getDatas().get("Taille");
         this.datas = datas;
-        this.squareListener = new SquareListener();
-        this.pieceListener = new PieceListener();
+        this.squareListener = checkersGameGUIBoardListeners.new SquareListener(this);
+        this.pieceListener = checkersGameGUIBoardListeners.new PieceListener(this);
 
         this.selectedPieceGUI = null;
 
@@ -70,11 +70,11 @@ public class CheckersGameGUIBoard extends JPanel {
         }
     }
 
-    private void setSelectedPiece(JPanel pieceGUI){
+    public void setSelectedPiece(JPanel pieceGUI){
         this.selectedPieceGUI = pieceGUI;
     }
 
-    private void movePiece(JPanel destinationCell){
+    public void movePiece(JPanel destinationCell){
         //On déplace la piece stockée dans selectedPieceGUI dans la case de destination noire choisie
         destinationCell.add(selectedPieceGUI, BorderLayout.CENTER);
         repaint(); //On update la fenêtre
@@ -82,60 +82,5 @@ public class CheckersGameGUIBoard extends JPanel {
     }
 
 
-    private class PieceListener implements MouseListener{
 
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            setSelectedPiece((JPanel) e.getSource()); //On récupère le pion sélectionnée et on stocke sa référence dans la variable globale selectedPieceGUI
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-    }
-
-    private class SquareListener implements MouseListener{
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if(selectedPieceGUI!=null)
-                movePiece((JPanel) e.getSource()); //On déplace la pièce dans la case choisie
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-    }
 }
