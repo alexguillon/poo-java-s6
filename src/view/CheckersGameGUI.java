@@ -1,7 +1,6 @@
 package view;
 
 import javax.swing.*;
-import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -19,10 +18,12 @@ public class CheckersGameGUI extends JFrame implements Observer {
         this.setContentPane(checkersBoard);
         this.menuBar = new CheckersGameGUIMenu(checkersGameGUIData);
         this.setJMenuBar(menuBar);
+        checkersGameGUIData.addObserver(this);
     }
 
     @Override
     public void update(Observable o, Object arg) {
-
+        repaint();
+        revalidate();
     }
 }

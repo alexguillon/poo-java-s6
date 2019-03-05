@@ -44,8 +44,10 @@ public class CheckersGameGUIData extends Observable implements Map {
 
     @Override
     public Object put(Object key, Object value) {
+        this.mapGUIData.put(key, value);
         setChanged();
         notifyObservers();
+
         return null;
     }
 

@@ -18,7 +18,7 @@ public class CheckersGameGUIDataFactory {
         map.put(PieceSquareColor.CYAN, Color.CYAN);
         map.put(PieceSquareColor.RED, Color.RED);
         map.put("Taille", 10);
-        map.put("Forme", "Carre");
+        map.put("Forme", "Cercle");
         CheckersGameGUIData checkersGameGUIData = new CheckersGameGUIData(map);
         return checkersGameGUIData;
 

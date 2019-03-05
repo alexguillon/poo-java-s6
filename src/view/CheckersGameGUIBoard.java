@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Map;
 
-public class CheckersGameGUIBoard extends JPanel {
+public class CheckersGameGUIBoard extends JPanel  {
 
     private MouseListener squareListener;
     private MouseListener pieceListener;
