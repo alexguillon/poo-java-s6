@@ -1,4 +1,6 @@
-package view;
+package gui;
+
+import checkers.PieceSquareColor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,11 +9,11 @@ import java.util.Map;
 public class SquareGUI extends JPanel {
 
     private PieceSquareColor pieceColor;
-    private CheckersGameGUIData datas;
+    private Map datas;
     private int id;
     private static int nbObject = 1;
 
-    public SquareGUI(PieceSquareColor pieceColor, CheckersGameGUIData datas){
+    public SquareGUI(PieceSquareColor pieceColor, Map datas){
         super();
         this.id = nbObject;
         nbObject++;
@@ -24,7 +26,7 @@ public class SquareGUI extends JPanel {
     }
 
     public void paintComponent(Graphics g){
-        this.setBackground((Color)this.datas.getDatas().get(pieceColor)); //Si la case est de type noire, on dessine une case noire, sinon une case blanche
+        this.setBackground((Color)this.datas.get(pieceColor)); //Si la case est de type noire, on dessine une case noire, sinon une case blanche
         super.paintComponent(g);
     }
     public int getId(){

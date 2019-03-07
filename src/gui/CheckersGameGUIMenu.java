@@ -1,8 +1,8 @@
-package view;
+package gui;
+
+import checkers.PieceSquareColor;
 
 import javax.swing.*;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,9 +13,9 @@ public class CheckersGameGUIMenu extends JMenuBar {
     private JColorChooser colorChooserWhiteSquare, colorChooserBlackSquare, colorChooserPiecePlayer1, colorChooserPiecePlayer2;
     private JMenuItem cercle, carre, pizza, submenuWhite, submenuBlack, subMenuPiecePlayer1, subMenuPiecePlayer2;
     private JMenuListener actionListener;
-    private CheckersGameGUIData checkersGameGUIData;
+    private Map checkersGameGUIData;
 
-    public CheckersGameGUIMenu(CheckersGameGUIData checkersGameGUIData){
+    public CheckersGameGUIMenu(Map checkersGameGUIData){
         this.checkersGameGUIData = checkersGameGUIData;
         menu=new JMenu("Paramètres d'affichage");
         submenuWhite=new JMenuItem("Couleur cases blanches");

@@ -1,4 +1,4 @@
-package view;
+package gui;
 
 import java.util.*;
 
@@ -18,10 +18,6 @@ public class CheckersGameGUIData extends Observable implements Map {
         return mapGUIData.size();
     }
 
-    public Map<Object, Object> getDatas(){
-        return this.mapGUIData;
-    }
-
     @Override
     public boolean isEmpty() {
         return false;
@@ -39,23 +35,29 @@ public class CheckersGameGUIData extends Observable implements Map {
 
     @Override
     public Object get(Object key) {
-        return null;
+        Object result = this.mapGUIData.get(key);
+        setChanged();
+        notifyObservers();
+
+        return result;
     }
 
     @Override
     public Object put(Object key, Object value) {
-        this.mapGUIData.put(key, value);
+        Object result = this.mapGUIData.put(key, value);
         setChanged();
         notifyObservers();
 
-        return null;
+        return result;
     }
 
     @Override
     public Object remove(Object key) {
+        Object result = this.mapGUIData.remove(key);
         setChanged();
         notifyObservers();
-        return null;
+
+        return result;
     }
 
     @Override

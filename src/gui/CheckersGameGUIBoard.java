@@ -1,25 +1,27 @@
-package view;
+package gui;
 
-import notPOO.CheckersGameHalfPOO;
+import checkers.PieceSquareColor;
+import controler.CheckersGameControler;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Map;
 
 public class CheckersGameGUIBoard extends JPanel  {
 
+    private CheckersGameControler checkersGameControler;
     private MouseListener squareListener;
     private MouseListener pieceListener;
 
     public JPanel selectedPieceGUI;
     private int length;
-    private CheckersGameGUIData datas;
+    private Map datas;
 
-    public CheckersGameGUIBoard(CheckersGameGUIData datas, CheckersGameGUIBoardListeners checkersGameGUIBoardListeners){
+    public CheckersGameGUIBoard(Map datas, CheckersGameGUIBoardListeners checkersGameGUIBoardListeners, CheckersGameControler checkersGameControler){
         super();
-        this.length = (Integer) datas.getDatas().get("Taille");
+        this.checkersGameControler = checkersGameControler;
+        this.length = (Integer) datas.get("Taille");
         this.datas = datas;
         this.squareListener = checkersGameGUIBoardListeners.new SquareListener(this);
         this.pieceListener = checkersGameGUIBoardListeners.new PieceListener(this);
@@ -81,6 +83,7 @@ public class CheckersGameGUIBoard extends JPanel  {
         revalidate();
     }
 
-
-
+    public CheckersGameControler getCheckersGameControler() {
+        return checkersGameControler;
+    }
 }

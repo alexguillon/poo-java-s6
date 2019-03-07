@@ -1,4 +1,4 @@
-package view;
+package gui;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
@@ -13,7 +13,12 @@ public class CheckersGameGUIBoardListeners {
             this.checkersGameGUIBoard = checkersGameGUIBoard;
         }
         public void mouseClicked(MouseEvent ev){
-            this.checkersGameGUIBoard.setSelectedPiece((JPanel) ev.getSource()); //On récupère le pion sélectionnée et on stocke sa référence dans la variable globale selectedPieceGUI
+            JPanel piece = (JPanel) ev.getSource();
+            SquareGUI square = (SquareGUI) piece.getParent();
+            int indexSquare = square.getId();
+            if(checkersGameGUIBoard.getCheckersGameControler().isPieceMovable(indexSquare)){
+                this.checkersGameGUIBoard.setSelectedPiece((JPanel) ev.getSource()); //On récupère le pion sélectionnée et on stocke sa référence dans la variable globale selectedPieceGUI
+            }
         }
 
         @Override
@@ -45,8 +50,9 @@ public class CheckersGameGUIBoardListeners {
         }
         @Override
         public void mouseClicked(MouseEvent e) {
-            if(this.checkersGameGUIBoard.selectedPieceGUI!=null)
+            if(this.checkersGameGUIBoard.selectedPieceGUI!=null) {
                 this.checkersGameGUIBoard.movePiece((JPanel) e.getSource()); //On déplace la pièce dans la case choisie
+            }
         }
 
         @Override

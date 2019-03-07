@@ -1,4 +1,6 @@
-package view;
+package gui;
+
+import checkers.PieceSquareColor;
 
 import java.awt.*;
 import java.util.HashMap;
