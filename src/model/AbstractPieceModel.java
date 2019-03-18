@@ -7,8 +7,8 @@ import java.util.Objects;
 
 public abstract class AbstractPieceModel implements PieceModel{
 
-    Coord coord;
-    PieceSquareColor pieceSquareColor;
+    private Coord coord;
+    private PieceSquareColor pieceSquareColor;
 
     public AbstractPieceModel(Coord coord, PieceSquareColor pieceSquareColor) {
         this.coord = coord;
@@ -17,7 +17,7 @@ public abstract class AbstractPieceModel implements PieceModel{
 
     @Override
     public Coord getCoord() {
-        return null;
+        return coord;
     }
 
     @Override
@@ -27,7 +27,7 @@ public abstract class AbstractPieceModel implements PieceModel{
 
     @Override
     public PieceSquareColor getPieceColor() {
-        return null;
+        return pieceSquareColor;
     }
 
     @Override
