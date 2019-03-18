@@ -14,7 +14,6 @@ public class PieceGUI extends JPanel {
         super();
         this.pieceColor = pieceColor;
         this.datas = datas;
-
     }
 
     public void paintComponent(Graphics g) {

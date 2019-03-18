@@ -22,7 +22,7 @@ public abstract class AbstractPieceModel implements PieceModel{
 
     @Override
     public void move(Coord targetCoord) {
-
+        this.coord = targetCoord;
     }
 
     @Override
@@ -31,7 +31,7 @@ public abstract class AbstractPieceModel implements PieceModel{
     }
 
     @Override
-    public boolean isMoveOk(Coord tergetCoord, boolean isPieceToTake) {
+    public boolean isMoveOk(Coord targetCoord, boolean isPieceToTake) {
         return false;
     }
 
