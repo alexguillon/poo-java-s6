@@ -86,4 +86,8 @@ public class CheckersGameGUIBoard extends JPanel  {
     public CheckersGameControler getCheckersGameControler() {
         return checkersGameControler;
     }
+
+    public void removePiece(JPanel removePieceSquare){
+
+    }
 }

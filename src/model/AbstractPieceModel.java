@@ -9,15 +9,22 @@ public abstract class AbstractPieceModel implements PieceModel{
 
     private Coord coord;
     private PieceSquareColor pieceSquareColor;
+    private CheckersGameModel checkersGameModel;
 
-    public AbstractPieceModel(Coord coord, PieceSquareColor pieceSquareColor) {
+    public AbstractPieceModel(Coord coord, PieceSquareColor pieceSquareColor, CheckersGameModel checkersGameModel) {
         this.coord = coord;
         this.pieceSquareColor = pieceSquareColor;
+        this.checkersGameModel = checkersGameModel;
     }
 
     @Override
     public Coord getCoord() {
         return coord;
+    }
+
+    @Override
+    public CheckersGameModel getCheckersGameModel() {
+        return checkersGameModel;
     }
 
     @Override

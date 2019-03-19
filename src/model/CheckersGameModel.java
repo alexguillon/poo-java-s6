@@ -17,29 +17,47 @@ public class CheckersGameModel {
         currentColor = CheckersGameModelFactory.getBeginColor();
         pieceList = new LinkedList<PieceModel>();
         for(int i=0; i<CheckersGameModelFactory.getCheckersGameModelCoords().get(PieceSquareColor.BLACK).size();i++){
-            PawnModel newPiece = new PawnModel(CheckersGameModelFactory.getCheckersGameModelCoords().get(PieceSquareColor.BLACK).get(i), PieceSquareColor.BLACK);
+            PawnModel newPiece = new PawnModel(CheckersGameModelFactory.getCheckersGameModelCoords().get(PieceSquareColor.BLACK).get(i), PieceSquareColor.BLACK, this);
             pieceList.add(newPiece);
         }
         for(int i=0; i<CheckersGameModelFactory.getCheckersGameModelCoords().get(PieceSquareColor.WHITE).size();i++){
-            PawnModel newPiece = new PawnModel(CheckersGameModelFactory.getCheckersGameModelCoords().get(PieceSquareColor.WHITE).get(i), PieceSquareColor.WHITE);
+            PawnModel newPiece = new PawnModel(CheckersGameModelFactory.getCheckersGameModelCoords().get(PieceSquareColor.WHITE).get(i), PieceSquareColor.WHITE, this);
             pieceList.add(newPiece);
         }
     }
 
     public int getLength(){
-        return 10;
+        return length;
+    }
+
+    public List<PieceModel> getPieceList(){
+        return pieceList;
     }
 
     public boolean isPieceMovable(Coord coord){
         boolean bool =false;
         for (PieceModel piece : pieceList) {
-            if(piece.getCoord().equals(coord)){
-                if(piece.getPieceColor().equals(currentColor)){
+            if(piece.getPieceColor().equals(currentColor)){
+                if(piece.getCoord().equals(coord)){
                     bool = true;
                 }
             }
         }
         return bool;
+    }
+
+    public boolean isMovePieceOk(Coord initCoord, Coord targetCoord){
+        PieceModel currentPiece = null;
+        for (PieceModel piece : pieceList) {
+            if(piece.getCoord().equals(initCoord)){
+                currentPiece = piece;
+            }
+        }
+        return currentPiece.isMoveOk(targetCoord, false);
+    }
+
+    public Coord movePiece(Coord initCoord, Coord targetCoord){
+        return null;
     }
 
     public String toString() {
