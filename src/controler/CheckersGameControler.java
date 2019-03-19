@@ -24,14 +24,15 @@ public class CheckersGameControler {
     }
 
     public int movePiece(int squareIndex){
-        return -1;
+        Coord targetCoord = this.transformIndexToCoord(squareIndex, this.checkersGameModel.getLength());
+        Coord newCoord = this.checkersGameModel.movePiece(currentPieceCoord, targetCoord);
+        return transformCoordToIndex(newCoord);
     }
 
     private Coord transformIndexToCoord(int squareIndex, int length){
         Coord coord = new Coord('a', 1);
         coord.setColonne((char)((squareIndex%length + 'a')-1));
         coord.setLigne((int)(squareIndex/length));
-        System.out.println(coord);
         return coord;
     }
 

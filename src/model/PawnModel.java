@@ -12,11 +12,11 @@ public class PawnModel extends AbstractPieceModel{
     @Override
     public boolean isMoveOk(Coord targetCoord, boolean isPieceToTake) {
         // Verify the arrival case is empty (cause to the EmptyBorders)
-        for(PieceModel piece : this.getCheckersGameModel().getPieceList()){
+        /*for(PieceModel piece : this.getCheckersGameModel().getPieceList()){
             if(piece.getCoord().equals(targetCoord)){
                 return false;
             }
-        }
+        }*/
         int deltaLigne = targetCoord.getLigne() - getCoord().getLigne();
         int deltaColonne = targetCoord.getColonne() - getCoord().getColonne();
         // If we take a piece

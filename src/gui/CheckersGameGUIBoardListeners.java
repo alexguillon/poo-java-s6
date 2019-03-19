@@ -52,9 +52,9 @@ public class CheckersGameGUIBoardListeners {
         public void mouseClicked(MouseEvent e) {
             if(this.checkersGameGUIBoard.selectedPieceGUI!=null) {
                 int indexArrivalSquare = ((SquareGUI) ((JPanel) e.getSource())).getId();
-               // if(checkersGameGUIBoard.getCheckersGameControler().isMoveTargetOk(indexArrivalSquare)){
+                if(checkersGameGUIBoard.getCheckersGameControler().isMoveTargetOk(indexArrivalSquare)){
                     this.checkersGameGUIBoard.movePiece((JPanel) e.getSource()); //On déplace la pièce dans la case choisie
-                //}
+                }
             }
         }
 

@@ -15,7 +15,7 @@ public class CheckersGameModel {
     public CheckersGameModel(){
         length = CheckersGameModelFactory.getLength();
         currentColor = CheckersGameModelFactory.getBeginColor();
-        pieceList = new LinkedList<PieceModel>();
+        pieceList = new LinkedList<>();
         for(int i=0; i<CheckersGameModelFactory.getCheckersGameModelCoords().get(PieceSquareColor.BLACK).size();i++){
             PawnModel newPiece = new PawnModel(CheckersGameModelFactory.getCheckersGameModelCoords().get(PieceSquareColor.BLACK).get(i), PieceSquareColor.BLACK, this);
             pieceList.add(newPiece);
@@ -38,7 +38,9 @@ public class CheckersGameModel {
         boolean bool =false;
         for (PieceModel piece : pieceList) {
             if(piece.getPieceColor().equals(currentColor)){
+
                 if(piece.getCoord().equals(coord)){
+                    System.out.println("okkkkk");
                     bool = true;
                 }
             }
@@ -47,17 +49,36 @@ public class CheckersGameModel {
     }
 
     public boolean isMovePieceOk(Coord initCoord, Coord targetCoord){
+        System.out.println(currentColor);
         PieceModel currentPiece = null;
+        boolean isPieceToTake = false;
+        char middleMoveCol = (char)((initCoord.getColonne()+targetCoord.getColonne())/2);
+        int middleMoveLig = (initCoord.getLigne()+targetCoord.getLigne())/2;
+        Coord middleMoveCoord = new Coord(middleMoveCol, middleMoveLig);
         for (PieceModel piece : pieceList) {
             if(piece.getCoord().equals(initCoord)){
                 currentPiece = piece;
             }
+            else if(piece.getCoord().equals(middleMoveCoord) && !piece.getPieceColor().equals(this.currentColor)){
+                isPieceToTake = true;
+            }
         }
-        return currentPiece.isMoveOk(targetCoord, false);
+        return currentPiece.isMoveOk(targetCoord, isPieceToTake);
     }
 
     public Coord movePiece(Coord initCoord, Coord targetCoord){
-        return null;
+        int index = 0;
+        int i = 0;
+        for (PieceModel piece : pieceList) {
+            if(piece.getCoord().equals(initCoord)){
+                index = i;
+            }
+            i++;
+        }
+        pieceList.get(index).move(targetCoord);
+        currentColor = currentColor==PieceSquareColor.WHITE ? PieceSquareColor.BLACK : PieceSquareColor.WHITE;
+        System.out.println(currentColor);
+        return targetCoord;
     }
 
     public String toString() {
