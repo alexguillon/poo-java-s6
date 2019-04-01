@@ -30,13 +30,21 @@ public class CheckersGameControler {
     }
 
     private Coord transformIndexToCoord(int squareIndex, int length){
-        Coord coord = new Coord('a', 1);
-        coord.setColonne((char)((squareIndex%length + 'a')-1));
-        coord.setLigne((int)(squareIndex/length));
-        return coord;
+        char col = 'a';
+        int lig = 0;
+        if(squareIndex%length==0){
+            squareIndex--;
+            col = (char)((squareIndex%length + 'a'));
+            lig = (int)(squareIndex/length);
+        } else {
+            col = (char)((squareIndex%length + 'a')-1);
+            lig = (int)(squareIndex/length);
+        }
+        return new Coord(col, lig);
     }
 
     private int transformCoordToIndex(Coord coord){
-        return (coord.getColonne()-'a'+1)+coord.getLigne()*10;
+        int index = (coord.getColonne()-'a'+1)+coord.getLigne()*10;
+        return index;
     }
 }

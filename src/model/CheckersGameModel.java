@@ -40,7 +40,6 @@ public class CheckersGameModel {
             if(piece.getPieceColor().equals(currentColor)){
 
                 if(piece.getCoord().equals(coord)){
-                    System.out.println("okkkkk");
                     bool = true;
                 }
             }
@@ -49,21 +48,23 @@ public class CheckersGameModel {
     }
 
     public boolean isMovePieceOk(Coord initCoord, Coord targetCoord){
-        System.out.println(currentColor);
         PieceModel currentPiece = null;
         boolean isPieceToTake = false;
         char middleMoveCol = (char)((initCoord.getColonne()+targetCoord.getColonne())/2);
         int middleMoveLig = (initCoord.getLigne()+targetCoord.getLigne())/2;
         Coord middleMoveCoord = new Coord(middleMoveCol, middleMoveLig);
         for (PieceModel piece : pieceList) {
-            if(piece.getCoord().equals(initCoord)){
+            if(piece.getCoord().equals(initCoord) && piece.getPieceColor().equals(currentColor)){
                 currentPiece = piece;
             }
-            else if(piece.getCoord().equals(middleMoveCoord) && !piece.getPieceColor().equals(this.currentColor)){
+            else if(piece.getCoord().equals(middleMoveCoord) && !piece.getPieceColor().equals(currentColor)){
                 isPieceToTake = true;
             }
         }
-        return currentPiece.isMoveOk(targetCoord, isPieceToTake);
+        if(currentPiece != null){
+            return currentPiece.isMoveOk(targetCoord, isPieceToTake);
+        }
+        return false;
     }
 
     public Coord movePiece(Coord initCoord, Coord targetCoord){
@@ -77,7 +78,6 @@ public class CheckersGameModel {
         }
         pieceList.get(index).move(targetCoord);
         currentColor = currentColor==PieceSquareColor.WHITE ? PieceSquareColor.BLACK : PieceSquareColor.WHITE;
-        System.out.println(currentColor);
         return targetCoord;
     }
 
