@@ -80,6 +80,12 @@ public class CheckersGameGUIBoard extends JPanel  {
         //On déplace la piece stockée dans selectedPieceGUI dans la case de destination noire choisie
         this.checkersGameControler.movePiece(((SquareGUI)destinationCell).getId());
         destinationCell.add(selectedPieceGUI, BorderLayout.CENTER);
+        int indexPieceToTake = this.checkersGameControler.removePiece();
+        if(indexPieceToTake!=-1){
+            JPanel cell = (JPanel)this.getComponent(indexPieceToTake);
+            System.out.println(cell);
+                        // selectedPieceGUI.getParent().remove(selectedPieceGUI);
+        }
         repaint(); //On update la fenêtre
         revalidate();
     }
@@ -88,7 +94,4 @@ public class CheckersGameGUIBoard extends JPanel  {
         return checkersGameControler;
     }
 
-    public void removePiece(JPanel removePieceSquare){
-        removePieceSquare.removeAll();
-    }
 }

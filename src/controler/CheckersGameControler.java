@@ -29,6 +29,11 @@ public class CheckersGameControler {
         return transformCoordToIndex(newCoord);
     }
 
+    public int removePiece(){
+        int indexPieceToTake = this.checkersGameModel.removePiece();
+        return indexPieceToTake;
+    }
+
     private Coord transformIndexToCoord(int squareIndex, int length){
         char col = 'a';
         int lig = 0;

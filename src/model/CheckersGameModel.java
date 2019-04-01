@@ -11,6 +11,7 @@ public class CheckersGameModel {
     private List<PieceModel> pieceList;
     private int length;
     private PieceSquareColor currentColor;
+    private PieceModel pieceToTake;
 
     public CheckersGameModel(){
         length = CheckersGameModelFactory.getLength();
@@ -38,7 +39,6 @@ public class CheckersGameModel {
         boolean bool =false;
         for (PieceModel piece : pieceList) {
             if(piece.getPieceColor().equals(currentColor)){
-
                 if(piece.getCoord().equals(coord)){
                     bool = true;
                 }
@@ -59,6 +59,7 @@ public class CheckersGameModel {
             }
             else if(piece.getCoord().equals(middleMoveCoord) && !piece.getPieceColor().equals(currentColor)){
                 isPieceToTake = true;
+                pieceToTake = piece;
             }
         }
         if(currentPiece != null){
@@ -77,8 +78,22 @@ public class CheckersGameModel {
             i++;
         }
         pieceList.get(index).move(targetCoord);
+        /* if(pieceToTake != null){
+            System.out.println(pieceToTake);
+            removePieceToTake();
+        } */
         currentColor = currentColor==PieceSquareColor.WHITE ? PieceSquareColor.BLACK : PieceSquareColor.WHITE;
         return targetCoord;
+    }
+
+    public int removePiece(){
+        int indexPieceToTake = -1;
+        if(pieceToTake!=null){
+            indexPieceToTake = pieceList.indexOf(pieceToTake);
+            pieceList.remove(pieceToTake);
+            pieceToTake = null;
+        }
+        return indexPieceToTake;
     }
 
     public String toString() {

@@ -35,4 +35,13 @@ public class SquareGUI extends JPanel {
     public void setId(int id){
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "SquareGUI{" +
+                "pieceColor=" + pieceColor +
+                ", datas=" + datas +
+                ", id=" + id +
+                '}';
+    }
 }

@@ -29,7 +29,6 @@ public abstract class AbstractPieceModel implements PieceModel{
 
     @Override
     public void move(Coord targetCoord) {
-        System.out.println("piece bougée");
         this.coord = targetCoord;
     }
 

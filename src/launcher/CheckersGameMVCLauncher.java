@@ -1,6 +1,5 @@
 package launcher;
 
-import checkers.Coord;
 import controler.CheckersGameControler;
 import gui.CheckersGameGUI;
 import model.CheckersGameModel;
