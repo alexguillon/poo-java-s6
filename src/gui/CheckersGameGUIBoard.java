@@ -83,11 +83,7 @@ public class CheckersGameGUIBoard extends JPanel  {
         int indexPieceToTake = this.checkersGameControler.removePiece();
         if(indexPieceToTake!=-1){
             JPanel cell = (JPanel)this.getComponent(indexPieceToTake-1);
-            System.out.println(indexPieceToTake);
-            System.out.println(cell);
-            System.out.println(cell.getComponents().length);
             if(cell.getComponents().length>0){
-                System.out.println(cell.getComponent(0));
                 cell.remove(0);
             }
         }
