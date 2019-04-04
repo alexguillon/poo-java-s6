@@ -86,14 +86,14 @@ public class CheckersGameModel {
         return targetCoord;
     }
 
-    public int removePiece(){
-        int indexPieceToTake = -1;
+    public Coord removePiece(){
+        Coord coordPieceToTake = null;
         if(pieceToTake!=null){
-            indexPieceToTake = pieceList.indexOf(pieceToTake);
+            coordPieceToTake = pieceToTake.getCoord();
             pieceList.remove(pieceToTake);
             pieceToTake = null;
         }
-        return indexPieceToTake;
+        return coordPieceToTake;
     }
 
     public String toString() {

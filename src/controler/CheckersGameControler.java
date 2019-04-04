@@ -30,8 +30,11 @@ public class CheckersGameControler {
     }
 
     public int removePiece(){
-        int indexPieceToTake = this.checkersGameModel.removePiece();
-        return indexPieceToTake;
+        Coord coordPieceToTake = this.checkersGameModel.removePiece();
+        if(coordPieceToTake!=null){
+            return transformCoordToIndex(coordPieceToTake);
+        }
+        return -1;
     }
 
     private Coord transformIndexToCoord(int squareIndex, int length){

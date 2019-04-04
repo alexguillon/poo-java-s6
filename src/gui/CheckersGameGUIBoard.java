@@ -82,9 +82,14 @@ public class CheckersGameGUIBoard extends JPanel  {
         destinationCell.add(selectedPieceGUI, BorderLayout.CENTER);
         int indexPieceToTake = this.checkersGameControler.removePiece();
         if(indexPieceToTake!=-1){
-            JPanel cell = (JPanel)this.getComponent(indexPieceToTake);
+            JPanel cell = (JPanel)this.getComponent(indexPieceToTake-1);
+            System.out.println(indexPieceToTake);
             System.out.println(cell);
-                        // selectedPieceGUI.getParent().remove(selectedPieceGUI);
+            System.out.println(cell.getComponents().length);
+            if(cell.getComponents().length>0){
+                System.out.println(cell.getComponent(0));
+                cell.remove(0);
+            }
         }
         repaint(); //On update la fenêtre
         revalidate();

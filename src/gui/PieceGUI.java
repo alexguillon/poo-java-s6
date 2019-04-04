@@ -10,6 +10,14 @@ public class PieceGUI extends JPanel {
     private PieceSquareColor pieceColor;
     private Map datas;
 
+    @Override
+    public String toString() {
+        return "PieceGUI{" +
+                "pieceColor=" + pieceColor +
+                ", datas=" + datas +
+                '}';
+    }
+
     public PieceGUI(PieceSquareColor pieceColor, Map datas){
         super();
         this.pieceColor = pieceColor;

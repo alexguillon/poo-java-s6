@@ -12,6 +12,13 @@ public class CheckersGameGUIData extends Observable implements Map {
     }
 
     @Override
+    public String toString() {
+        return "CheckersGameGUIData{" +
+                "mapGUIData=" + mapGUIData +
+                '}';
+    }
+
+    @Override
     public int size() {
         setChanged();
         notifyObservers();
