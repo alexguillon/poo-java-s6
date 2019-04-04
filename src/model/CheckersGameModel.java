@@ -17,12 +17,12 @@ public class CheckersGameModel {
         length = CheckersGameModelFactory.getLength();
         currentColor = CheckersGameModelFactory.getBeginColor();
         pieceList = new LinkedList<>();
-        for(int i=0; i<CheckersGameModelFactory.getCheckersGameModelCoords().get(PieceSquareColor.BLACK).size();i++){
-            PawnModel newPiece = new PawnModel(CheckersGameModelFactory.getCheckersGameModelCoords().get(PieceSquareColor.BLACK).get(i), PieceSquareColor.BLACK, this);
+        for(int i=0; i<CheckersGameModelFactory.getCheckersGameModelCoords().get(PieceSquareColor.RED).size();i++){
+            PawnModel newPiece = new PawnModel(CheckersGameModelFactory.getCheckersGameModelCoords().get(PieceSquareColor.RED).get(i), PieceSquareColor.RED, this);
             pieceList.add(newPiece);
         }
-        for(int i=0; i<CheckersGameModelFactory.getCheckersGameModelCoords().get(PieceSquareColor.WHITE).size();i++){
-            PawnModel newPiece = new PawnModel(CheckersGameModelFactory.getCheckersGameModelCoords().get(PieceSquareColor.WHITE).get(i), PieceSquareColor.WHITE, this);
+        for(int i=0; i<CheckersGameModelFactory.getCheckersGameModelCoords().get(PieceSquareColor.CYAN).size();i++){
+            PawnModel newPiece = new PawnModel(CheckersGameModelFactory.getCheckersGameModelCoords().get(PieceSquareColor.CYAN).get(i), PieceSquareColor.CYAN, this);
             pieceList.add(newPiece);
         }
     }
@@ -82,7 +82,7 @@ public class CheckersGameModel {
             System.out.println(pieceToTake);
             removePieceToTake();
         } */
-        currentColor = currentColor==PieceSquareColor.WHITE ? PieceSquareColor.BLACK : PieceSquareColor.WHITE;
+        currentColor = currentColor==PieceSquareColor.CYAN ? PieceSquareColor.RED : PieceSquareColor.CYAN;
         return targetCoord;
     }
 
@@ -102,7 +102,7 @@ public class CheckersGameModel {
         // Création d'un tableau 2D avec les noms des pièces
         for(PieceModel piece : this.pieceList) {
             PieceSquareColor color = piece.getPieceColor();
-            String stColor = (PieceSquareColor.WHITE.equals(color) ? "--B--" : "--N--" );
+            String stColor = (PieceSquareColor.CYAN.equals(color) ? "--B--" : "--N--" );
             int col = piece.getCoord().getColonne()-'a';
             int lig = piece.getCoord().getLigne()-1;
             damier[lig][col] = stColor;

@@ -27,8 +27,8 @@ public class CheckersGameModelFactory {
                 new Coord('a',1), new Coord('c',1), new Coord('e',1), new Coord('g',1), new Coord('i',1),
                 new Coord('b',0), new Coord('d',0), new Coord('f',0), new Coord('h',0), new Coord('j',0)
         };
-        map.put(PieceSquareColor.BLACK, Arrays.asList(blackPieceCoords));
-        map.put(PieceSquareColor.WHITE, Arrays.asList(whitePieceCoords));
+        map.put(PieceSquareColor.RED, Arrays.asList(blackPieceCoords));
+        map.put(PieceSquareColor.CYAN, Arrays.asList(whitePieceCoords));
         return map;
     }
 
@@ -37,6 +37,6 @@ public class CheckersGameModelFactory {
     }
 
     public static PieceSquareColor getBeginColor(){
-        return PieceSquareColor.WHITE;
+        return PieceSquareColor.CYAN;
     }
 }

@@ -62,11 +62,11 @@ public class CheckersGameGUIMenu extends JMenuBar {
                 checkersGameGUIData.put(PieceSquareColor.BLACK, c);
             }
             else if(e.getSource().equals(subMenuPiecePlayer1)){
-                Color c = colorChooserBlackSquare.showDialog((Component) e.getSource(), "Choisir une couleur pour les pions du joueur 1", (Color)checkersGameGUIData.get(PieceSquareColor.BLACK));
+                Color c = colorChooserBlackSquare.showDialog((Component) e.getSource(), "Choisir une couleur pour les pions du joueur 1", (Color)checkersGameGUIData.get(PieceSquareColor.CYAN));
                 checkersGameGUIData.put(PieceSquareColor.CYAN, c);
             }
             else if(e.getSource().equals(subMenuPiecePlayer2)){
-                Color c = colorChooserBlackSquare.showDialog((Component) e.getSource(), "Choisir une couleur pour les pions du joueur 2", (Color)checkersGameGUIData.get(PieceSquareColor.BLACK));
+                Color c = colorChooserBlackSquare.showDialog((Component) e.getSource(), "Choisir une couleur pour les pions du joueur 2", (Color)checkersGameGUIData.get(PieceSquareColor.RED));
                 checkersGameGUIData.put(PieceSquareColor.RED, c);
             }
             else if(e.getSource().equals(carre)){

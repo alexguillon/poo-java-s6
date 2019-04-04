@@ -14,9 +14,9 @@ public class PawnModel extends AbstractPieceModel{
         int deltaLigne = targetCoord.getLigne() - getCoord().getLigne();
         int deltaColonne = targetCoord.getColonne() - getCoord().getColonne();
 
-        if(getPieceColor().equals(PieceSquareColor.WHITE) && getCoord().getLigne()>=targetCoord.getLigne()){
+        if(getPieceColor().equals(PieceSquareColor.CYAN) && getCoord().getLigne()>=targetCoord.getLigne()){
             return false;
-        }else if(getPieceColor().equals(PieceSquareColor.BLACK) && getCoord().getLigne()<=targetCoord.getLigne()){
+        }else if(getPieceColor().equals(PieceSquareColor.RED) && getCoord().getLigne()<=targetCoord.getLigne()){
             return false;
         }
         // If we take a piece
